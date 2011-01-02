@@ -71,4 +71,22 @@ describe "LayoutLinks" do
 				         :content => "Profile")
     end
   end
+
+  describe "when admin" do
+
+    before(:each) do
+      @user = Factory(:user)
+      @user.toggle!(:admin)
+      visit signin_path
+      fill_in :email,    :with => @user.email
+      fill_in :password, :with => @user.password
+      click_button
+    end
+
+    it "should have delete link" do
+      visit users_path
+      response.should have_selector("a", :href => user_path(@user),
+				         :content => "delete")
+    end
+  end
 end
