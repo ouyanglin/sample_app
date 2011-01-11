@@ -70,6 +70,26 @@ describe "LayoutLinks" do
       response.should have_selector("a", :href => user_path(@user),
 				         :content => "Profile")
     end
+
+    describe "when there are microposts" do
+
+      before(:each) do
+        visit root_path
+	fill_in :micropost_content, :with => "First post"
+	click_button
+      end
+
+      it "should have delete link" do
+        click_link "Profile"
+        response.should have_selector("a", :content => "delete")
+      end
+
+      it "should not have delete link for different users" do
+	second = Factory(:user, :email => "another@example.com")
+        visit users_path(second)
+	response.should_not have_selector("a", :content => "delete")
+      end
+    end
   end
 
   describe "when admin" do

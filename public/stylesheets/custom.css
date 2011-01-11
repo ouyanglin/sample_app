@@ -197,30 +197,38 @@ h1.micropost {
   margin-bottom: 0.3em;
 }
 
-table.microposts {
-  margin-top: 1em;
+ol.microposts {
+  list-style-type:none;
+  list-style-position: inside;
+  margin: 0 px;
+  padding: 0px;
 }
 
-table.microposts tr {
+.microposts li {
+  border-top: 1px solid #ccc;
+  margin-left: 0px;
+  padding-left: 0 px;
+  padding-top: 10px;
+  vertical-align: top;
   height: 70px;
 }
 
-table.microposts tr td.gravatar {
-  border-top: 1px solid #ccc;
+.microposts img.gravatar {
   vertical-align: top;
   width: 50px;
+  display: inline;
+  float: left;
 }
 
-table.microposts tr td.micropost {
-  border-top: 1px solid #ccc;
-  vertical-align: top;
-  padding-top: 10px;
-}
-
-table.microposts tr td.micropost span.timestamp {
-  display: block;
+.microposts div.timestamp {
   font-size: 85%;
   color: #666;
+  vertical-align: bottom;
+}
+
+a.delete {
+  float: right;
+
 }
 
 div.user_info img {
